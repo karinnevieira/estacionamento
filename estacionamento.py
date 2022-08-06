@@ -13,21 +13,30 @@ class Veiculo:
         self.estacionado = False
 
     def __str__(self) -> str:
-        return f'O veículo é um {self.tipo}, de placa {self.placa} e é {self.estacionado} que está estacionado'
+        if self.estacionado == True:
+            return f'O veículo é um {self.tipo}, de placa {self.placa} e está estacionado'
+        else:
+            return f'O veículo é um {self.tipo}, de placa {self.placa} e não está estacionado'
 
 class Carro(Veiculo):
     def __init__(self, tipo, placa):
         super().__init__(tipo, placa)
 
     def status_estacionamento(self):
-        print(f'O veículo é um {self.tipo}, de placa {self.placa} e é {self.estacionado} que está estacionado')
+        if self.estacionado == True:
+            print(f'O veículo é um {self.tipo}, de placa {self.placa} e está estacionado')
+        else:
+            print(f'O veículo é um {self.tipo}, de placa {self.placa} e não está estacionado')
 
 class Moto(Veiculo):
     def __init__(self, tipo, placa):
         super().__init__(tipo, placa)
 
     def status_estacionamento(self):
-        print(f'O veículo é um {self.tipo}, de placa {self.placa} e é {self.estacionado} que está estacionado')
+        if self.estacionado == True:
+            print(f'O veículo é um {self.tipo}, de placa {self.placa} e está estacionado')
+        else:
+            print(f'O veículo é um {self.tipo}, de placa {self.placa} e não está estacionado')
 
 carro1 = Carro('Carro', 'AAA0000')
 carro1.estacionar()
@@ -40,7 +49,7 @@ carro1.status_estacionamento()
 
 class Vaga:
     def __init__(self, id, tipo, placa):
-        self.id = id #random
+        self.id = id 
         self.tipo = tipo
         self.livre = True
         self.placa = placa
@@ -57,7 +66,7 @@ class Vaga:
         elif self.livre == False:
             print(f'A vaga de id {self.id}, é do tipo {self.tipo}, está ocupada e o veículo tem placa {self.placa}')
 
-vaga1 = Vaga ('789','Carro','AAA0000')
+vaga1 = Vaga ('1','Carro','AAA0000')
 vaga1.ocupar()
 vaga1.status_vaga()  
 
@@ -99,6 +108,8 @@ class Estacionamento:
         print(f'O estacionamento possui {self.total_vagas_livres_global} vagas totais, sendo que delas, {self.total_vagas_livres_somente_moto} são vagas onde somente motos estacionam e {self.total_vagas_livres_carro} são vagas livres preferencialmente para carros')
 
 estacionamento1 = Estacionamento()
+estacionamento1.estacionar_carro()
+estacionamento1.estacionar_moto()
 estacionamento1.estado_do_estacionamento()
 
 
